@@ -14,22 +14,13 @@ import Error from "./pages/Error.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<AppLayout />}>
-      <Route
-        index
-        element={<InitialPage />}
-        action={submitAction}
-        errorElement={<Error />}
-      />
-      <Route
-        path="/r/:subreddit"
-        element={<App />}
-        loader={loader}
-        errorElement={<Error />}
-      />
+    <Route path="/" element={<AppLayout />} errorElement={<Error />}>
+      <Route index element={<InitialPage />} action={submitAction} />
+      <Route path="/r/:subreddit" element={<App />} loader={loader} />
     </Route>,
   ),
 );
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router} />
