@@ -4,7 +4,7 @@ This is a Reddit client that fetches the data from the Reddit JSON feed from dif
 
 ### Demo
 
-Check out the deployed live version of this Reddit client at: https://reddit-client-101.netlify.app/
+Check out the deployed live version of this project at: https://reddit-client-101.netlify.app/
 
 ### Features
 
