@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Form, Link, redirect } from "react-router-dom";
 
 function InitialPage() {
   const [search, setSearch] = useState("");
   const [searchInputIsShown, setSearchInputIsShown] = useState(false);
+  const inputFormRef = useRef(null);
 
   const getItems = JSON.parse(localStorage.getItem("subreddit"));
 
   useEffect(() => {
     let searchHandler = (e) => {
-      if (!document.getElementById("inputForm")?.contains(e.target)) {
+      if (!inputFormRef.current?.contains(e.target)) {
         setSearchInputIsShown(false);
       }
     };
@@ -42,7 +43,7 @@ function InitialPage() {
       {searchInputIsShown && (
         <Form
           autoComplete="off"
-          id="inputForm"
+          ref={inputFormRef}
           method="POST"
           className="absolute top-[43%] mt-10 flex flex-col items-center rounded-2xl bg-gray-800 px-8 py-4"
         >
